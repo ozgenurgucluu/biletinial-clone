@@ -9,7 +9,7 @@ import ChooseCity from "./ChooseCity";
 
 const Header = () => {
   return (
-    <div className="flex md:gap-14 md:py-3.5  items-center justify-center  bg-blue-600 ">
+    <div className="flex md:gap-14 md:py-3.5  items-center justify-center ">
       <ChooseCity />
 
       <Nav />
