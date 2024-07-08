@@ -131,7 +131,7 @@ const ChooseCity = () => {
           </div>
         </Link>
         <div
-          className={`fixed top-0 flex flex-col h-full  bg-gray-200 sm:w-[635px] w-2 transform transition-all duration-500 ease-in-out ${
+          className={`fixed top-0 flex flex-col   bg-gray-200 sm:w-[635px] w-2 transform transition-all duration-500 ease-in-out ${
             menuOpen ? "left-0" : "-left-[700px]"
           }  `}
         >
