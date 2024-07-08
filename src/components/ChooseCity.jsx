@@ -7,7 +7,7 @@ const ChooseCity = () => {
   const [menuOpen, setMenuOpen] = useState();
   const [selectedOption, setSelectedOption] = useState("");
   const [inputValue, setInputValue] = useState("");
-  const [cities, setCities] = useState([
+  const [cities] = useState([
     { title: "Adana", number: 1 },
     { title: "Adıyaman", number: 2 },
     { title: "Afyonkarahisar", number: 3 },
@@ -131,9 +131,8 @@ const ChooseCity = () => {
           </div>
         </Link>
         <div
-          className={`fixed top-0 flex flex-col   bg-gray-200 sm:w-[635px] w-2 transform transition-all duration-500 ease-in-out ${
-            menuOpen ? "left-0" : "-left-[700px]"
-          }  `}
+          className={`fixed top-0 flex flex-col   bg-gray-200 sm:w-[635px] w-2 transform transition-all duration-500 ease-in-out ${menuOpen ? "left-0" : "-left-[700px]"
+            }  `}
         >
           <div className="flex flex-col p-8 gap-4">
             {" "}

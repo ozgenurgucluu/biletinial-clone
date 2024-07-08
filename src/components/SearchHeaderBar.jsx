@@ -5,10 +5,10 @@ import Search from "../icons/Search";
 import Close from "../icons/Close";
 import { Link } from "react-router-dom";
 const SearchHeaderBar = () => {
-  const [openSearch, setOpenSearch] = useState(false);
+  const [openSearch, setOpenSearch] = useState(true);
   const populer = ["Serdar Ortaç Konseri", "Hande Yener", "Buika", "ARTBAT", "DJ Andre Souied"];
   const handleClick = () => {
-    setOpenSearch(pre => !pre);
+    setOpenSearch(!openSearch);
     console.log("hey çalıştım");
     console.log(openSearch);
   };
@@ -29,7 +29,7 @@ const SearchHeaderBar = () => {
           className="flex shadow-lg w-[262px] h-[48px] text-right shadow-slate-200 py-4  border border-black/15  p-3 focus:outline-blue-500 rounded-md "
           type="text"
           placeholder="Sinema, tiyatro ve konser ara.."
-          onClick={handleClick
+          onClick={() => handleClick()
           }
 
         />
@@ -43,10 +43,10 @@ const SearchHeaderBar = () => {
       <div className="border border-black/15 rounded-full p-3 relative z-10">
         <Login />
       </div>
-      {openSearch && <>
-        <div className="fixed   w-screen h-screen top-0 left-0 bg-black/80 z-10"></div>
+      <>
+        {openSearch && <div className="fixed top-0  w-screen h-screen  left-0 bg-black/80 z-10 "></div>}
         <div
-          className="fixed flex top-0  right-0 w-full  left-0 z-30 bg-white  transfrom transition-all duration-500 ease-in-out"
+          className={`fixed flex  right-0 w-full ${openSearch ? "top-0" : "top-[-100px]"}   z-30 bg-white   transition-all duration-500 ease-in-out`}
         >
           <div className="border-b w-full">
             <div className=" container mx-auto w-full z-30   flex  items-center ">
@@ -60,9 +60,10 @@ const SearchHeaderBar = () => {
 
             </div>
           </div>
+
         </div>
 
-        <div className="w-full fixed top-[100px] left-0 z-30">
+        <div className={`w-full fixed ${openSearch ? " top-[100px]" : "top-[-1000px]"}  left-0 z-30    transition-all duration-500 ease-in-out`}>
 
           <div className="container mx-auto flex flex-col gap-3 bg-white  border   ">
             <div className="flex flex-col gap-3  p-4 ">
@@ -83,7 +84,7 @@ const SearchHeaderBar = () => {
 
         </div>
 
-      </>}
+      </>
     </div>
   );
 };
