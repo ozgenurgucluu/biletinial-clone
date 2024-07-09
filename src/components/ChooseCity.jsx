@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import TicketChoice from "../icons/TicketChoice";
 import Location from "../icons/Location";
 import { Link } from "react-router-dom";
@@ -140,7 +140,7 @@ const ChooseCity = () => {
               <div className="flex flex-col ">
                 {" "}
                 <span className="text-2xl font-semibold text-gray-700">
-                  Biletinial'da etkinlikler bir tık
+                  Biletinial&apos;da etkinlikler bir tık
                 </span>
                 <span className="text-2xl font-semibold text-gray-700">
                   uzağında !
@@ -191,7 +191,7 @@ const ChooseCity = () => {
                 className=" border border-b-black/10 p-5 flex hover:bg-amber-300"
                 key={index}
               >
-                {item.title}
+                <span className="px-4">{item.title}</span>
               </div>
             ))}
           </div>

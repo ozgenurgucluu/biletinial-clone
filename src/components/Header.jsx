@@ -1,14 +1,12 @@
-import React, { useState } from "react";
 import Theatre from "../icons/Theatre";
 import Cultere from "../icons/Cultere";
-
 import Nav from "./Nav";
 import ChooseCity from "./ChooseCity";
 import SearchHeaderBar from "./SearchHeaderBar";
 
 const Header = () => {
   return (
-    <div className="flex md:gap-12 md:py-3.5  items-center justify-center h-auto ">
+    <div className="flex md:gap-12 md:py-3.5  items-center justify-center h-auto border-b ">
       <ChooseCity />
 
       <Nav />

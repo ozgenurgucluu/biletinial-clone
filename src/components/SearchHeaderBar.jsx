@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import TR from "../icons/TR";
 import Login from "../icons/Login";
 import Search from "../icons/Search";
 import Close from "../icons/Close";
 import { Link } from "react-router-dom";
 const SearchHeaderBar = () => {
-  const [openSearch, setOpenSearch] = useState(true);
+  const [openSearch, setOpenSearch] = useState();
   const populer = ["Serdar Ortaç Konseri", "Hande Yener", "Buika", "ARTBAT", "DJ Andre Souied"];
   const handleClick = () => {
     setOpenSearch(!openSearch);
