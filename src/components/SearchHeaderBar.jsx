@@ -9,8 +9,6 @@ const SearchHeaderBar = () => {
   const populer = ["Serdar Ortaç Konseri", "Hande Yener", "Buika", "ARTBAT", "DJ Andre Souied"];
   const handleClick = () => {
     setOpenSearch(!openSearch);
-    console.log("hey çalıştım");
-    console.log(openSearch);
   };
 
   return (

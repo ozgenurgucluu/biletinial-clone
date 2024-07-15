@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 const ChooseCity = () => {
   const [menuOpen, setMenuOpen] = useState();
   const [selectedOption, setSelectedOption] = useState("");
+  const [selectedItem, setSelectedItem] = useState();
+
   const [inputValue, setInputValue] = useState("");
   const [cities] = useState([
     { title: "Adana", number: 1 },
@@ -107,9 +109,13 @@ const ChooseCity = () => {
   const handleClick = (e) => {
     setInputValue(e.target.value);
   };
+  const selectedCity = (item) => {
+    setSelectedItem(item)
+    console.log(item);
+  }
 
   return (
-    <div className="flex flex-col md:gap-5 items-center relative ">
+    <div className="flex flex-col md:gap-5 items-center relative  ">
       <div className="flex gap-3">
         {" "}
         <Link to={"/"}>
@@ -131,10 +137,10 @@ const ChooseCity = () => {
           </div>
         </Link>
         <div
-          className={`fixed top-0 flex flex-col   bg-gray-200 sm:w-[635px] w-2 transform transition-all duration-500 ease-in-out ${menuOpen ? "left-0" : "-left-[700px]"
+          className={`fixed top-0 flex flex-col  min-h-full bg-gray-200 sm:w-[635px] w-2 transform transition-all duration-500 ease-in-out ${menuOpen ? "left-0" : "-left-[700px]"
             }  `}
         >
-          <div className="flex flex-col p-8 gap-4">
+          <div className="flex flex-col  p-8 gap-4">
             {" "}
             <div className="flex justify-between ">
               <div className="flex flex-col ">
@@ -185,19 +191,20 @@ const ChooseCity = () => {
               />
             </div>
           </div>
-          <div className="flex flex-col overflow-y-scroll scroll-m w-full  list-none">
+          <div className="flex flex-col scroll-smooth overflow-y-scroll w-full h-[560px]">
             {filtrelenmisSehirler.map((item, index) => (
               <div
-                className=" border border-b-black/10 p-5 flex hover:bg-amber-300"
+                className=" border border-b-black/10 p-5 flex  hover:bg-amber-300"
                 key={index}
+                onClick={() => selectedCity(item)}
               >
-                <span className="px-4">{item.title}</span>
+                <span className="px-4 ">{item.title}</span>
               </div>
             ))}
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 
