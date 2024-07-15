@@ -1,4 +1,4 @@
-import React from 'react'
+
 
 const Close = ({ height = 28, width = 28, ...args }) => {
   return (

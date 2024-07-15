@@ -1,63 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
-
+import axios from "axios";
 
 const Nav = () => {
   const [openOther, setOpenOther] = useState()
-  const categories = [
-    {
-      title: "Cinema",
-      to: "/cinema",
-      src: "https://b6s54eznn8xq.merlincdn.net/dist/assets/img/icns/sinema.svg",
-    },
-    {
-      title: "Tiyatro",
-      to: "/theatre",
-      src: "https://b6s54eznn8xq.merlincdn.net/dist/assets/img/icns/tiyatro.svg",
-    },
-    {
-      title: "Müzik",
-      to: "/music",
-      src: "https://b6s54eznn8xq.merlincdn.net/dist/assets/img/icns/muzik.svg",
-    },
-    {
-      title: "Spor",
-      to: "/spor",
-      src: "https://b6s54eznn8xq.merlincdn.net/dist/assets/img/icns/spor.svg",
-    },
 
-  ];
-  const others = [
-    {
-      title: "Stand Up",
-      src: "https://b6s54eznn8xq.merlincdn.net/dist/assets/img/icns/standup.svg"
-    },
-    {
-      title: "Opera-Bale",
-      src: "https://b6s54eznn8xq.merlincdn.net/dist/assets/img/icns/bale.svg"
-    },
-    {
-      title: "Gösteri",
-      src: "https://b6s54eznn8xq.merlincdn.net/dist/assets/img/icns/gosteri.svg"
-    },
-    {
-      title: "Eğitim",
-      src: "https://b6s54eznn8xq.merlincdn.net/dist/assets/img/icns/egitim.svg"
-    },
-    {
-      title: "Seminer",
-      src: "https://b6s54eznn8xq.merlincdn.net/dist/assets/img/icns/seminer.svg"
-    },
-    {
-      title: "Etkinlikler",
-      src: "https://b6s54eznn8xq.merlincdn.net/dist/assets/img/icns/festival.svg"
-    },
-    {
-      title: "Eğlence",
-      src: "https://b6s54eznn8xq.merlincdn.net/dist/assets/img/icns/opera.svg"
-    },
-  ]
   const [select, setSelect] = useState();
   const handleClick = () => {
     setOpenOther(!openOther);
@@ -67,15 +14,31 @@ const Nav = () => {
     setSelect(select);
     console.log(select)
   }
+  const [categories, setCategories] = useState([]);
+  const [others, setOthers] = useState([]);
+
+  const getCategory = () => {
+    axios.get("http://localhost:3000/event-types").then((response) => {
+      const firstFourData = response.data.slice(0, 4);
+      const other = response.data.slice(5, 11)
+      setOthers(other)
+      setCategories(firstFourData);
+      console.log(response.data)
+    }, []);
+  }
+  useEffect(() => {
+    getCategory();
+  })
   return (
     <div className="flex gap-10">
-      {categories.map((item, index) => (
+      {categories.map((item,) => (
         <Link
-          key={index}
+          key={item.id}
           className="flex flex-col justify-center items-center text-sm gap-1.5"
-          to={item.to}
+
+
         >
-          <img className="h-[30px] w-[30px] " src={item.src} />
+          <img className="h-[30px] w-[30px] " src={`http://localhost:3000/${item.icon}`} />
           <span className="flex">{item.title}</span>
 
         </Link>
@@ -83,8 +46,8 @@ const Nav = () => {
       <Link className="flex flex-col justify-center items-center text-sm gap-1.5" onMouseEnter={handleClick} ><img className="h-[30px] w-[30px] " src="https://b6s54eznn8xq.merlincdn.net/dist/assets/img/icns/tumu.svg" /><span className="flex">Diğer</span></Link>
 
       <div onMouseLeave={handleClick} className={` fixed w-60 top-[95px] ${openOther ? "left-[830px]" : "-left-[500px]"}`}>
-        {others.map((item, index) => (
-          <Link className="hover:bg-slate-200 bg-white flex border items-center px-4 py-3 gap-3 " onClick={selectedCity} key={index}><img className="w-8 h-8" src={item.src} /><span >{item.title}</span></Link>
+        {others.map((item) => (
+          <Link className="hover:bg-slate-200 bg-white flex border items-center px-4 py-3 gap-3 " onClick={selectedCity} key={item.id}><img className="w-[30px] h-[30px]" src={`http://localhost:3000/${item.icon}`} /><span >{item.title}</span></Link>
         ))}
       </div>
     </div>

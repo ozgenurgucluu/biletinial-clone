@@ -32,7 +32,7 @@ const SearchHeaderBar = () => {
 
         />
         <span className="absolute left-2 items-center ">
-          <Search />
+          {<Search />}
         </span>
         <span className="border border-black/15 rounded-md p-2 py-4 items-center">
           <TR />
@@ -54,7 +54,7 @@ const SearchHeaderBar = () => {
               />
 
               <div className="min-h-full h-[100px] w-16 justify-center flex items-center  hover:bg-yellow-400"> <Search width={28} height={28} /></div>
-              <div className="min-h-full h-[100px] border-l  w-16 justify-center flex items-center hover:bg-gray-200" onClick={handleClick}> <Close width={28} height={28} /></div>
+              <div className="min-h-full h-[100px] border-l  w-16 justify-center flex items-center hover:bg-gray-200" onClick={handleClick}> <Close width={28} height={28} /> </div>
 
             </div>
           </div>
