@@ -1,118 +1,52 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import TicketChoice from "../icons/TicketChoice";
 import Location from "../icons/Location";
 import { Link } from "react-router-dom";
+import axios from "axios";
+
 
 const ChooseCity = () => {
   const [menuOpen, setMenuOpen] = useState();
   const [selectedOption, setSelectedOption] = useState("");
-  const [selectedItem, setSelectedItem] = useState();
-
+  const [selectedItem, setSelectedItem] = useState([]);
   const [inputValue, setInputValue] = useState("");
-  const [cities] = useState([
-    { title: "Adana", number: 1 },
-    { title: "Adıyaman", number: 2 },
-    { title: "Afyonkarahisar", number: 3 },
-    { title: "Ağrı", number: 4 },
-    { title: "Aksaray", number: 5 },
-    { title: "Amasya", number: 6 },
-    { title: "Ankara", number: 7 },
-    { title: "Antalya", number: 8 },
-    { title: "Ardahan", number: 9 },
-    { title: "Artvin", number: 10 },
-    { title: "Aydın", number: 11 },
-    { title: "Balıkesir", number: 12 },
-    { title: "Bartın", number: 13 },
-    { title: "Batman", number: 14 },
-    { title: "Bayburt", number: 15 },
-    { title: "Bilecik", number: 16 },
-    { title: "Bingöl", number: 17 },
-    { title: "Bitlis", number: 18 },
-    { title: "Bolu", number: 19 },
-    { title: "Burdur", number: 20 },
-    { title: "Bursa", number: 21 },
-    { title: "Çanakkale", number: 22 },
-    { title: "Çankırı", number: 23 },
-    { title: "Çorum", number: 24 },
-    { title: "Denizli", number: 25 },
-    { title: "Diyarbakır", number: 26 },
-    { title: "Düzce", number: 27 },
-    { title: "Edirne", number: 28 },
-    { title: "Elazığ", number: 29 },
-    { title: "Erzincan", number: 30 },
-    { title: "Erzurum", number: 31 },
-    { title: "Eskişehir", number: 32 },
-    { title: "Gaziantep", number: 33 },
-    { title: "Giresun", number: 34 },
-    { title: "Gümüşhane", number: 35 },
-    { title: "Hakkari", number: 36 },
-    { title: "Hatay", number: 37 },
-    { title: "Iğdır", number: 38 },
-    { title: "Isparta", number: 39 },
-    { title: "İstanbul", number: 40 },
-    { title: "İzmir", number: 41 },
-    { title: "Kahramanmaraş", number: 42 },
-    { title: "Karabük", number: 43 },
-    { title: "Karaman", number: 44 },
-    { title: "Kars", number: 45 },
-    { title: "Kastamonu", number: 46 },
-    { title: "Kayseri", number: 47 },
-    { title: "Kırıkkale", number: 48 },
-    { title: "Kırklareli", number: 49 },
-    { title: "Kırşehir", number: 50 },
-    { title: "Kilis", number: 51 },
-    { title: "Kocaeli", number: 52 },
-    { title: "Konya", number: 53 },
-    { title: "Kütahya", number: 54 },
-    { title: "Malatya", number: 55 },
-    { title: "Manisa", number: 56 },
-    { title: "Mardin", number: 57 },
-    { title: "Mersin", number: 58 },
-    { title: "Muğla", number: 59 },
-    { title: "Muş", number: 60 },
-    { title: "Nevşehir", number: 61 },
-    { title: "Niğde", number: 62 },
-    { title: "Ordu", number: 63 },
-    { title: "Osmaniye", number: 64 },
-    { title: "Rize", number: 65 },
-    { title: "Sakarya", number: 66 },
-    { title: "Samsun", number: 67 },
-    { title: "Şanlıurfa", number: 68 },
-    { title: "Siirt", number: 69 },
-    { title: "Sinop", number: 70 },
-    { title: "Sivas", number: 71 },
-    { title: "Şırnak", number: 72 },
-    { title: "Tekirdağ", number: 73 },
-    { title: "Tokat", number: 74 },
-    { title: "Trabzon", number: 75 },
-    { title: "Tunceli", number: 76 },
-    { title: "Uşak", number: 77 },
-    { title: "Van", number: 78 },
-    { title: "Yalova", number: 79 },
-    { title: "Yozgat", number: 80 },
-    { title: "Zonguldak", number: 81 },
-  ]);
+  const [cities, setCities] = useState([]);
 
-  let filtrelenmisSehirler = cities.filter((item) => {
+  let filteredCities = cities.filter((item) => {
     let _title = item.title.toLocaleLowerCase();
+    console.log(_title);
     if (_title.startsWith(inputValue.toLocaleLowerCase())) {
       return item;
     }
-  });
+  }, []);
 
   const handleSelectChange = (event) => {
     setSelectedOption(event.target.value);
   };
+
   const toggleDown = () => {
     setMenuOpen(!menuOpen);
   };
+
   const handleClick = (e) => {
     setInputValue(e.target.value);
   };
+
   const selectedCity = (item) => {
     setSelectedItem(item)
-    console.log(item);
+    console.log("seçilen şehir:", item);
+
   }
+
+  const getCities = () => {
+    axios.get("http://localhost:3000/cities").then((response) => {
+      setCities(response.data)
+    })
+  }
+
+  useEffect(() => {
+    getCities();
+  }, [])
 
   return (
     <div className="flex flex-col md:gap-5 items-center relative  ">
@@ -192,7 +126,7 @@ const ChooseCity = () => {
             </div>
           </div>
           <div className="flex flex-col scroll-smooth overflow-y-scroll w-full h-[560px]">
-            {filtrelenmisSehirler.map((item, index) => (
+            {filteredCities.map((item, index) => (
               <div
                 className=" border border-b-black/10 p-5 flex  hover:bg-amber-300"
                 key={index}

@@ -24,11 +24,11 @@ const Nav = () => {
       setOthers(other)
       setCategories(firstFourData);
       console.log(response.data)
-    }, []);
+    });
   }
   useEffect(() => {
     getCategory();
-  })
+  }, [])
   return (
     <div className="flex gap-10">
       {categories.map((item,) => (

@@ -6,7 +6,7 @@ import SearchHeaderBar from "./SearchHeaderBar";
 
 const Header = () => {
   return (
-    <div className="flex md:gap-12 md:py-3.5  items-center justify-center h-auto border-b ">
+    <div className="flex md:gap-12 md:py-3.5  items-center justify-center w-full h-auto border-b ">
       <ChooseCity />
 
       <Nav />
