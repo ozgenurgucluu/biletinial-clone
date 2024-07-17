@@ -3,18 +3,18 @@ import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import DefaultLayout from "./layouts/DefaultLayout.jsx";
 import "./index.css";
-import Music from "./components/Music.jsx";
-import Cinema from "./components/Cinema.jsx";
-import Theatre from "./components/Theatre.jsx";
-import Spor from "./components/Spor.jsx";
+import MusicLayout from "./layouts/MusicLayout.jsx";
+import CinemaLayout from "./layouts/CinemaLayout.jsx";
+import TheatreLayout from "./layouts/TheatreLayout.jsx";
+import SporLayout from "./layouts/SporLayout.jsx";
 import CityContextProvider from "./context/CityContextProvider.jsx";
-import Standup from "./components/Standup.jsx";
-import OperaBale from "./components/OperaBale.jsx";
-import Gosteri from "./components/Gosteri.jsx";
-import Egitim from "./components/Egitim.jsx";
-import Seminer from "./components/Seminer.jsx";
-import Etkinlikler from "./components/Etkinlikler.jsx";
-import Eglence from "./components/Eglence.jsx";
+import StandupLayout from "./layouts/StandupLayout.jsx";
+import OperaBaleLayout from "./layouts/OperaBaleLayout.jsx";
+import GosteriLayout from "./layouts/GosteriLayout.jsx";
+import EgitimLayout from "./layouts/EgitimLayout.jsx";
+import SeminerLayout from "./layouts/SeminerLayout.jsx";
+import EtkinliklerLayout from "./layouts/EtkinliklerLayout.jsx";
+import EglenceLayout from "./layouts/EglenceLayout.jsx";
 
 const router = createBrowserRouter([
   {
@@ -22,47 +22,47 @@ const router = createBrowserRouter([
     element: <DefaultLayout />,
     children: [{
       path: "/muzik/:city",
-      element: <Music />
+      element: <MusicLayout />
     },
     {
       path: "/sinema/:city",
-      element: <Cinema />
+      element: <CinemaLayout />
     },
     {
       path: "/tiyatro/:city",
-      element: <Theatre />
+      element: <TheatreLayout />
     },
     {
       path: "/spor/:city",
-      element: <Spor />
+      element: <SporLayout />
     },
     {
       path: "/stand-up/:city",
-      element: <Standup />
+      element: <StandupLayout />
     },
     {
       path: "/opera-bale/:city",
-      element: <OperaBale />
+      element: <OperaBaleLayout />
     },
     {
       path: "/gosteri/:city",
-      element: <Gosteri />
+      element: <GosteriLayout />
     },
     {
       path: "/egitim/:city",
-      element: <Egitim />
+      element: <EgitimLayout />
     },
     {
       path: "/seminer/:city",
-      element: <Seminer />
+      element: <SeminerLayout />
     },
     {
       path: "/etkinlikler/:city",
-      element: <Etkinlikler />
+      element: <EtkinliklerLayout />
     },
     {
       path: "/eglence/:city",
-      element: <Eglence />
+      element: <EglenceLayout />
     },
 
     ]

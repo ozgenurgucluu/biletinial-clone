@@ -12,7 +12,6 @@ const ChooseCity = () => {
   const [inputValue, setInputValue] = useState("");
   const [cities, setCities] = useState([]);
   const context = useContext(CityContext);
-  console.log("fd", context)
 
   let filteredCities = cities.filter((item) => {
     let _title = item.title.toLocaleLowerCase();
@@ -52,20 +51,21 @@ const ChooseCity = () => {
           <TicketChoice />
         </Link>
         <span className=" w-0.5 h-8 bg-black/25 "></span>
-        <Link
+        <div
           onClick={() => {
             toggleDown();
           }}
-          className="flex flex-col justify-start leading-3  items-start"
+          className="flex flex-col justify-start leading-3  items-start cursor-pointer"
         >
+          <span className="hover:border-t-4 hover:border-black "></span>
           {" "}
-          <span className="text-sm text-black/60">Konum</span>
+          <span className="text-sm text-black/60">Seçili Şehir</span>
           <div className="flex items-center justify-center gap-1">
             {" "}
-            <span className=" font-bold text-sm">Şehir Seç</span>
+            <span className=" font-bold text-sm">{context.city.title}</span>
             <Location />
           </div>
-        </Link>
+        </div>
         <div
           className={`fixed top-0 flex flex-col  min-h-full bg-gray-200 sm:w-[635px] w-2 transform transition-all duration-200 ease-in-out ${menuOpen ? "left-0" : "-left-[700px]"
             }  `}

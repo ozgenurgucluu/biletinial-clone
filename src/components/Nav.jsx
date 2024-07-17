@@ -40,7 +40,7 @@ const Nav = () => {
         <Link
           key={item.id}
           className="flex flex-col justify-center items-center text-sm gap-1.5"
-          to={`${item.id}/${context.city.id}`}
+          to={`/${item.id}/${context.city.id}`}
 
         >
           <img className="h-[30px] w-[30px] " src={`http://localhost:3000/${item.icon}`} />
@@ -55,7 +55,7 @@ const Nav = () => {
           <Link className="hover:bg-slate-200 bg-white flex border items-center px-4 py-3 gap-3 "
             onClick={selectedCity}
             key={item.id}
-            to={`${item.id}/${context.city.id}`}>
+            to={`/${item.id}/${context.city.id}`}>
             <img className="w-[30px] h-[30px]" src={`http://localhost:3000/${item.icon}`} />
             <span >{item.title}</span></Link>
         ))}
