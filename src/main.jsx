@@ -8,27 +8,63 @@ import Cinema from "./components/Cinema.jsx";
 import Theatre from "./components/Theatre.jsx";
 import Spor from "./components/Spor.jsx";
 import CityContextProvider from "./context/CityContextProvider.jsx";
+import Standup from "./components/Standup.jsx";
+import OperaBale from "./components/OperaBale.jsx";
+import Gosteri from "./components/Gosteri.jsx";
+import Egitim from "./components/Egitim.jsx";
+import Seminer from "./components/Seminer.jsx";
+import Etkinlikler from "./components/Etkinlikler.jsx";
+import Eglence from "./components/Eglence.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <DefaultLayout />,
     children: [{
-      path: "/music",
+      path: "/muzik/:city",
       element: <Music />
     },
     {
-      path: "/cinema",
+      path: "/sinema/:city",
       element: <Cinema />
     },
     {
-      path: "/theatre",
+      path: "/tiyatro/:city",
       element: <Theatre />
     },
     {
-      path: "/spor",
+      path: "/spor/:city",
       element: <Spor />
     },
+    {
+      path: "/stand-up/:city",
+      element: <Standup />
+    },
+    {
+      path: "/opera-bale/:city",
+      element: <OperaBale />
+    },
+    {
+      path: "/gosteri/:city",
+      element: <Gosteri />
+    },
+    {
+      path: "/egitim/:city",
+      element: <Egitim />
+    },
+    {
+      path: "/seminer/:city",
+      element: <Seminer />
+    },
+    {
+      path: "/etkinlikler/:city",
+      element: <Etkinlikler />
+    },
+    {
+      path: "/eglence/:city",
+      element: <Eglence />
+    },
+
     ]
   },
 ]);

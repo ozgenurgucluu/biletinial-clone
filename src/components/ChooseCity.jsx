@@ -3,18 +3,19 @@ import TicketChoice from "../icons/TicketChoice";
 import Location from "../icons/Location";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { CityContext } from "../context/CityContextProvider";
 
 
 const ChooseCity = () => {
   const [menuOpen, setMenuOpen] = useState();
   const [selectedOption, setSelectedOption] = useState("");
-  const [selectedItem, setSelectedItem] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [cities, setCities] = useState([]);
+  const context = useContext(CityContext);
+  console.log("fd", context)
 
   let filteredCities = cities.filter((item) => {
     let _title = item.title.toLocaleLowerCase();
-    console.log(_title);
     if (_title.startsWith(inputValue.toLocaleLowerCase())) {
       return item;
     }
@@ -32,11 +33,6 @@ const ChooseCity = () => {
     setInputValue(e.target.value);
   };
 
-  const selectedCity = (item) => {
-    setSelectedItem(item)
-    console.log("seçilen şehir:", item);
-
-  }
 
   const getCities = () => {
     axios.get("http://localhost:3000/cities").then((response) => {
@@ -47,7 +43,7 @@ const ChooseCity = () => {
   useEffect(() => {
     getCities();
   }, [])
-
+  console.log("contextcity", context.city)
   return (
     <div className="flex flex-col md:gap-5 items-center relative  ">
       <div className="flex gap-3">
@@ -71,7 +67,7 @@ const ChooseCity = () => {
           </div>
         </Link>
         <div
-          className={`fixed top-0 flex flex-col  min-h-full bg-gray-200 sm:w-[635px] w-2 transform transition-all duration-500 ease-in-out ${menuOpen ? "left-0" : "-left-[700px]"
+          className={`fixed top-0 flex flex-col  min-h-full bg-gray-200 sm:w-[635px] w-2 transform transition-all duration-200 ease-in-out ${menuOpen ? "left-0" : "-left-[700px]"
             }  `}
         >
           <div className="flex flex-col  p-8 gap-4">
@@ -130,7 +126,8 @@ const ChooseCity = () => {
               <div
                 className=" border border-b-black/10 p-5 flex  hover:bg-amber-300"
                 key={index}
-                onClick={() => selectedCity(item)}
+                onClick={() => { context.setCity(item); toggleDown() }}
+
               >
                 <span className="px-4 ">{item.title}</span>
               </div>
