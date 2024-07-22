@@ -9,15 +9,13 @@ const Nav = () => {
   const [categories, setCategories] = useState([]);
   const [others, setOthers] = useState([]);
   const context = useContext(CityContext)
-  console.log("navbarcontext", context.city.id)
+
 
   const handleClick = () => {
     setOpenOther(!openOther);
-    console.log("other")
   }
   const selectedCity = () => {
     setSelect(select);
-    console.log(select)
   }
 
   const getCategory = () => {
@@ -26,7 +24,6 @@ const Nav = () => {
       const other = response.data.slice(4, 11)
       setOthers(other)
       setCategories(firstFourData);
-      console.log(response.data)
     });
   }
 

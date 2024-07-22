@@ -42,7 +42,6 @@ const ChooseCity = () => {
   useEffect(() => {
     getCities();
   }, [])
-  console.log("contextcity", context.city)
   return (
     <div className="flex flex-col md:gap-5 items-center relative  ">
       <div className="flex gap-3">
@@ -67,7 +66,7 @@ const ChooseCity = () => {
           </div>
         </div>
         <div
-          className={`fixed top-0 flex flex-col  min-h-full bg-gray-200 sm:w-[635px] w-2 transform transition-all duration-200 ease-in-out ${menuOpen ? "left-0" : "-left-[700px]"
+          className={`fixed top-0 flex flex-col z-30 min-h-full bg-gray-200 sm:w-[635px] w-2 transform transition-all duration-200 ease-in-out ${menuOpen ? "left-0" : "-left-[700px]"
             }  `}
         >
           <div className="flex flex-col  p-8 gap-4">
