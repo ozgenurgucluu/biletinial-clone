@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import Header from "../components/Header";
 import { Outlet, useLocation, useNavigate } from "react-router";
 import { CityContext } from "../context/CityContextProvider";
+import Footer from "./Footer";
 
 const DefaultLayout = () => {
 
@@ -18,10 +19,11 @@ const DefaultLayout = () => {
   }, [cityContext.city.id]);
 
   return (
-    <div>
+    <>
       <Header />
       <Outlet />
-    </div>
+      <Footer />
+    </>
   );
 };
 

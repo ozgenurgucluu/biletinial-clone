@@ -1,11 +1,10 @@
-import React from "react";
 
-const TicketChoice = () => {
+const TicketChoice = ({ width = 134, height = 32 }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="134"
-      height="32"
+      width={width}
+      height={height}
       viewBox="0 0 210 33"
       fill="none"
     >
