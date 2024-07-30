@@ -47,7 +47,7 @@ const Nav = () => {
       ))}
       <Link className="flex flex-col justify-center items-center text-sm gap-1.5" onMouseEnter={handleClick} ><img className="h-[30px] w-[30px] " src="https://b6s54eznn8xq.merlincdn.net/dist/assets/img/icns/tumu.svg" /><span className="flex">Diğer</span></Link>
 
-      <div onMouseLeave={handleClick} className={` fixed w-60 top-[95px] ${openOther ? "left-[830px]" : "-left-[500px]"}`}>
+      <div onMouseLeave={handleClick} className={` fixed w-60 z-30 top-[95px] ${openOther ? "left-[830px]" : "-left-[500px]"}`}>
         {others.map((item) => (
           <Link className="hover:bg-slate-200 bg-white flex border items-center px-4 py-3 gap-3 "
             onClick={selectedCity}
