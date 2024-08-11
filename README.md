@@ -1,8 +1,40 @@
-# React + Vite
+# biletinial-clone
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![choose-city-page](https://github.com/ozgenurgucluu/biletinial-clone/blob/main/screenshots/ChooseCity.png)
+![search-input-page](https://github.com/ozgenurgucluu/biletinial-clone/blob/main/screenshots/SearchInput.png)
+![footer-page](https://github.com/ozgenurgucluu/biletinial-clone/blob/main/screenshots/Footer.png)
 
-Currently, two official plugins are available:
+# Getting Started with Create React App
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+In this project, I cloned the Trendyol web application. Categories, add to cart, favorite, save, login and more work with dynamic components. I used `Tailwind` with `React`
+
+## Available Scripts
+
+In the project directory, you can run:
+
+### `npm install`
+
+Navigate to the directory:
+
+### `cd ticket-choice`
+
+Install packages in the project
+
+### `npm run dev`
+
+Runs the app in the development mode.
+Open http://localhost:3000 to view it in your browser.
+
+## Backend
+
+Install the dependencies:
+
+### `npm install -g json-server`
+
+Navigate to the directory:
+
+### `cd database`
+
+Start JSON Server
+
+### `npx json-server db.json`
