@@ -54,7 +54,7 @@ const ChooseCity = () => {
           onClick={() => {
             toggleDown();
           }}
-          className="flex flex-col justify-start leading-3  items-start cursor-pointer"
+          className="flex flex-col justify-start leading-3 border-t-4 border-white hover:border-black w-full transform duration-300  items-start cursor-pointer"
         >
           <span className="hover:border-t-4 hover:border-black "></span>
           {" "}
